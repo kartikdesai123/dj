@@ -1,0 +1,23 @@
+V. 1.3 [2018 08 05]
+* added outboud link open in release carousel:
+HTML INSTRUCTIONS FOR LINK STRUCTURE: 'a href="http://qantumthemes.com" class="btn link-trigger"'
+TO OPEN RELEASE LINKS IN NEW TAB ADD LINK IN THE HREF AND ADD CLASS "link-trigger"
+Be sure to use the new JS version.
+
+V. 1.2 [2017 08 13]
+fixed problem on modal in mobile
+https://themeforest.net/item/sonik-professional-one-page-music-dj-producer-responsive-html-template/17198389/comments?page=1&filter=all#comment_17165692
+
+
+V. 1.1 [2016 09 23]
+CHANGES:
+* main.js:
+	- removed $("#stickymenu").sticky({topSpacing:0, responsiveWidth: true, zIndex: 100});
+* qt-main.scss (and .css consequentially):
+	- added .qt-header .qt-valign-wrapper {position: relative; z-index: 10;} (firefox fix)
+	- added .qt-footer {position: relative;	z-index: 10;} (firefox fix)
+	- added .qt-menu-wrapper.skrollable-after {z-index: 100;position: fixed;top: 0;width: 100%;margin-top: -10px;background-color: #212121;}
+* index.html changes:
+	- removed from "div.qt-booking-form": data-50p-top="opacity:1;margin-top:0px" data-30p-top="opacity:1;" data-0p-top="opacity:0;margin-top:-700px"
+	- removed script jquery.sticky.js from index.html (firefox fix)
+	- added data-0-top to #menu div

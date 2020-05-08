@@ -1,0 +1,861 @@
+/*================================================================
+
+Index of contents:
+
+00. Libraries
+01. Generic styles
+02. Typography
+03. Parallax images 
+04. Menu
+05. Header
+06. Footer
+07. Sections
+08. Gridstack Carousel customization
+09. SLICK Slider
+10. Particles JS
+11. Responsive media styles
+
+================================================================*/
+
+/* 1. Colors
+   ========================================================================== */
+ @import "components/color";
+
+/* ==============================================
+
+ COLOR TIPS:
+ http://materializecss.com/color.html
+
+ ==============================================*/
+
+$primary-color: color("red", "accent-3") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color("teal", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: $primary-color !default;
+$link-color-hover: lighten($primary-color, 15%) !default;
+
+
+/* 00. Materialize Library
+================================================================ */
+
+@import "_materialize.scss";
+
+/* ============== QANTUMTHEMES POLYDECOR LIBRARY =============== */
+@import "_qt-polydecor.scss";
+
+
+/* 01. Generic styles
+================================================================ */
+
+*,:before,:after {
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+box-sizing:border-box;
+-webkit-backface-visibility:hidden;
+}
+
+
+.qt-firefoxfix {
+	transform: translate3d(0,0,0);
+}
+.logo {
+	max-width: 100%;
+	height: auto;
+	padding: 0 20px;
+}
+.row {
+    margin: 0 -0.75rem;
+}
+.button-collapse {
+	display: none;
+}
+.qt-fullscreen {
+	min-height: 100%;
+	min-height: 100vh;
+}
+
+.qt-valign-wrapper {
+	display: table;
+	min-height: 100vh;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	.qt-valign {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+.modal.bottom-sheet.open {
+	z-index: 99999999;
+}
+.modal-trigger {
+	z-index: 99999999 !important;
+}
+.qt-modalframe {
+	width: 100%;
+	height: auto;
+	border: none;
+	overflow: auto;
+	
+}
+.modal.bottom-sheet.open {
+	opacity: 1 !important;
+	bottom: 0 !important;
+	width: 100%;
+	display: block;
+	z-index:100;
+}
+
+#modalmask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	content: " ";
+	display: block;
+	top: 0;
+	z-index: 99;
+}
+
+/* 02. Typography
+================================================================ */
+body, html {
+	font-size: 19px;
+	line-height: 1.7em;
+	background: black;
+}
+p {font-size: 1rem; line-height: 1.7em;}
+h5 {font-size:1rem;line-height:1.25em;}
+h4 {font-size:1.7rem;line-height:1.25em;}
+h3 {font-size:2.89rem;line-height:1.25em;}
+h2 {font-size:4.913rem;line-height:1.25em;}
+h1 {font-size:8.352rem;line-height:1.25em;}
+h1.qt-title {font-size:14.199rem;line-height:1.25em;}
+
+h1, h2, h3, h4, h5, h6, .qt-menu {
+	font-family: 'Montserrat', Arial, sans-serif;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	text-rendering: geometricPrecision;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+.qt-menu {
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+	font-size: 0.8rem;
+}
+
+/* 03. Parallax images 
+================================================================ */
+
+.parallax {
+	z-index: 0;
+	img {
+		transition: all 0.3s ease;
+	}
+}
+.qt-parallax {
+	transition: background-position 0.35s ease;
+}
+.section.parallax-container {
+	height: auto;
+}
+
+/* 04. Menu
+================================================================ */
+
+.qt-menu-wrapper {
+	&.skrollable-after {
+		z-index: 100;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		margin-top: -10px;
+		background-color: #212121;
+	}
+	.qt-menu {
+		height: 90px;
+		padding: 10px 0;
+		line-height: 70px;
+		text-align: center;
+		background-color: transparent;
+		transition: background-color 0.3s, height 0.4s ease, padding 0.4s ease;
+		ul.qt-desktopmenu {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			li {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				color: #ffffff;
+				a {
+					color: inherit;
+					padding: 5px 20px;
+					transform: translate3d(0, 0, 0);
+					position: relative;
+					line-height: 70px;
+					&::before, &::after {
+						display: block;
+						width: 38px;
+						height: 2px;
+						content: " ";
+						position: absolute;
+						left: 0;
+						top: 50%;
+						background: $primary-color;
+						transform: rotate(315deg);
+						margin: -4px 0 0 20px;
+						z-index: -1;
+						transition: transform 0.4s ease, margin 0.3s ease, width 0.2s ease, height 0.4s ease, top 0.2s ease;
+					}
+					&::after {
+					 	margin: 4px 0 0 0px;
+					}
+					&:hover , &.active {
+						&::after, &::before {
+						 	transform: rotate(360deg);
+						    margin: 0 0 0 -3%;
+						    width: 106%;
+						    height: 108%;
+						    top: 0;
+						}
+					}
+				}
+			}
+		}
+		ul.qt-mobilemenu {
+			padding-top: 30px;
+			li {
+				a {
+					color: #efefef;
+				}
+			}
+		}
+		z-index: 2000;
+    	position: relative;
+	}
+	.is-sticky .qt-menu {
+		background-color: #121212;
+		height: 74px;
+		padding: 2px 0;
+	}
+
+	margin-top: -90px;
+
+}
+
+
+/* 05. Header
+================================================================ */
+.qt-header {
+	height: 100%;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.3);
+	padding: 0;
+	color: white;
+	position: relative;
+	z-index: 10;
+	.qt-valign-wrapper {
+		position: relative;
+		z-index: 10;
+
+	}
+}
+
+/* 06. Footer
+================================================================ */
+
+.qt-footer {
+	background-color: rgba(0,0,0,0.2);
+	height:auto;
+	padding: 70px 0;
+	position: relative;
+	z-index: 10;
+	h3, h5, p {
+		line-height: 1.5em;
+		padding: 5px 0;
+		margin: 0;
+	}
+	.qt-social {
+		font-size: 31px;
+	}
+	.container {
+		z-index: 3;
+		position: relative;
+	}
+	.qt-footertitle {
+		position: relative;
+		margin-bottom:10px;
+		&::before {
+			display: block;
+			width: 100px;
+			height: 6px;
+			content: " ";
+			position: absolute;
+			left: 50%;
+			margin-left: -50px;
+			bottom: 5px;
+			background: $primary-color;
+		}
+
+	}
+}
+
+/* 07. Sections
+================================================================ */
+
+@keyframes mbarmnu {  
+	0% { height: 20px;}  
+	50% { height: 5px; }
+	100% { height: 20px; }  
+}
+@keyframes mbarmnuB {  
+	0% { height: 7px;}  
+	25% { height: 18px;}  
+	50% { height: 10px; }
+	75% { height: 20px; }
+	100% { height: 3px; }  
+}
+
+.section {
+	padding: 0;
+	position: relative; 
+	z-index: 2;
+	.qt-section-title {
+		text-align: center;
+		position: relative;
+		margin-bottom: 0.7em;
+		margin-top: 0;
+		padding-top: 1em;
+		&::after, &::before {
+			content: " ";
+			display: block;
+			position: absolute;
+			width: 80px;
+			border-bottom: 1px solid;
+			left: 50%;
+			margin-left: -100px;
+			bottom: 0;
+		}
+		&::after {
+			margin-left: 20px;
+		}
+		i.deco {
+			display: block;
+			clear: both;
+			&::after, &::before {
+				display: block;
+				content: " ";
+				border: solid;
+				border-width: 0 1px 0 1px;
+				width: 16px;
+				height: 20px;
+				position: absolute;
+				left: 50%;
+				margin: 0 0 0 -11px;
+				animation: mbarmnu 0.5s forwards;
+				animation-duration: 1.8s;
+				animation-iteration-count: infinite; 
+				transition: opacity 0.2s;
+				transition-delay:0.3s;
+			}
+			&::after {
+				animation: mbarmnuB 0.5s forwards;
+				animation-duration: 1.4s;
+				animation-iteration-count: infinite; 
+				margin: 0 0 0 -5px;
+			}
+		}
+	}
+
+	&.section-music {
+		background-color: #343434;
+		color: #eceff1;
+		z-index: 14;
+		padding-bottom: 70px;
+	}
+	&.section-photos {
+		z-index: 13;
+		.qt-section-title {
+			position: absolute;
+		    z-index: 10;
+		    display: block;
+		    width: 100%;
+		    color: white;
+		    text-shadow: 0 0 15px rgba(0,0,0,0.2);
+		}
+	}
+	&.section-bio {
+		height: auto;
+		color: white;
+		z-index: 1;
+
+		.parallax {
+		 	img {
+				position: fixed;
+				z-index: -1;
+			}
+		}
+		.content {
+			width: 90%;
+			max-width: 800px;
+			padding: 40px 70px 70px 70px;
+			background: white;
+			color: #232323;
+			margin: 30px auto 80px auto;
+			box-shadow: 0 0 18px rgba(0,0,0,0.8);
+			.decor1, .decor2 {
+				opacity: 0.4;
+			}
+			h2, h3, h4, h5 {
+				margin: 40px 0 20px 0;
+				padding-bottom: 14px;
+				position: relative;
+				&::after {
+					display: block;
+					content: " ";
+					width: 100px;
+					border-bottom: 6px solid $primary-color;
+					position: absolute;
+					bottom: 0;
+				}
+			}
+		}
+	}
+	
+ 
+	&.section-booking {
+		background-color: #121212;
+		color: white;
+		z-index: 11;
+		.qt-booking-form {
+			width: 90%;
+			max-width: 800px;
+			background: white;
+			margin: 0 auto 100px ;
+			color: #565656;
+			.qt-contacts {
+				text-align: center;
+				p {
+					font-size: 1.7rem;
+					padding: 60px 0;
+					position: relative;
+					margin: 0;
+					&:nth-of-type(2n + 1)::after {
+						background: #efefef;
+						display: block;
+						content: " ";
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						transform: skewY(-10deg);
+					}
+				}
+				span {
+					position: relative;
+					z-index: 2;
+				}
+				span.lnr {
+					clear: both;
+					display: block;
+					font-size: 1.7rem;
+					line-height: 4.2rem;
+					width: 80px;
+					height: 80px;
+					margin: 20px auto;
+					border: 3px solid;
+					text-align: center;
+				}
+			}
+			> div {
+				padding: 30px;
+			}
+			.tabs {
+				height: 3.4rem;
+				li {
+					height: 3.4rem;
+					h5 {
+						margin: 0;
+						padding: 0;
+						line-height: 3.4rem;
+					}
+				}
+			}
+		}
+	}
+	&.section-presskit {
+		min-height: 100%;
+		height: auto;
+		z-index: 10;
+		.qt-framed {
+			padding: 0 30px 30px 30px;
+			border: 6px solid white;
+			margin: 50px 0;
+			background: rgba(0,0,0,0.5);
+			color: white;
+			width: 90%;
+			max-width: 800px;
+			margin: 100px auto;
+		}
+	}
+	&.section-video {
+		color: white;
+		background: #101010;
+	}
+	&.section-message {
+		color: white;
+	}
+
+}
+
+/* = 08. Gridstack Carousel customization
+==============================================================*/
+
+.qt-gridstackCarousel-container {
+	.qt-gridstackCarousel {
+		.carousel-item {
+			img {
+	    		width: 100%;
+	    		height: auto;
+	    		position: relative;
+	    	}
+	    	a {
+	    		display: block;
+	    		position:absolute;
+	    		z-index:30;
+	    		top:120%;
+	    		left:50%;
+	    		width: 2.89rem;
+	    		height: 2.89rem;
+	    		margin-left: -(2.89rem/2);
+	    		margin-top: -(2.89rem/2);
+	    		transition: top 0.4s ease;
+	    		transition-delay: 0.1s;
+	    		cursor: pointer;
+	    		padding: 0.595rem;
+			    font-size: 1.7rem;
+			    line-height: 1.7rem;
+	    	}
+		    &.active, &:active {
+		    	.caption{
+		    		bottom: 0;
+		    	}
+		    	a {
+		    		top:50%;
+		    	}
+		    }
+		    h5 {
+		    	margin: 0;
+		    	text-align: center;
+		    }
+		    width:300px;
+	    	height:340px;
+	    	overflow:hidden;
+	    	max-width:100%;
+		}
+		height: 360px;
+	}
+	.nav {
+	    position: absolute;
+	    width: 100%;
+	    margin-top: -45px;
+	    top: 50%;
+	    margin-top: -50px;
+	    height: 0;
+	    z-index: 500;
+	    a {
+	    	cursor: pointer;
+	    	font-size: 2.89rem;
+	    	width: 100px;
+		    height: 100px;
+		    line-height: 100px;
+		    text-align: center;
+		   
+	    }
+	    .prev {
+	    	position: absolute;
+		    // margin-left: 50px;
+		}
+		.next {
+			position: absolute;
+			right: 0;
+		    // margin-right: 50px;
+		    float: right;
+		}
+	}
+	position: relative;
+	padding-bottom: 80px;
+}
+
+
+/* 09. SLICK Slider
+================================================================ */
+
+.slick-slider {
+	.slick-slide  {
+		img {
+			width: 100%;
+			height: auto;
+		}
+		outline: none;
+	}
+
+	.slick-arrow {
+		position: absolute;
+		border: none;
+		display: block;
+		top: 0;
+		left: 0;
+		z-index: 100;
+		height: 100%;
+		width: 150px;
+		cursor: pointer;
+		background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+		outline: none;
+		color: transparent;
+		font-size: 0;
+		opacity: 0.3;
+		transition: opacity 0.3s;
+		&::after {
+			font-size: 1.7rem;
+			content: "\e875";
+			font-family: 'Linearicons-Free';
+			speak: none;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+			color: white;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		&.slick-next {
+			&::after {
+				content: "\e876";
+			}
+			left: auto;
+			right: 0;
+			background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 2%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 2%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 2%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 );
+		}
+		&:hover {
+			opacity: 1;
+		}
+	}
+	.slick-dots {
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: auto;
+		bottom: 10%;
+		li {
+			display: inline-block;
+			margin: 4px;
+			button {
+				content: " ";
+				display: block;
+				width: 40px;
+				height: 6px;
+				background: white;
+				box-shadow: 0 0 10px rgba(0,0,0,0.5);
+				border: none;
+				cursor: pointer;
+				font-size: 0;
+				overflow: hidden;
+				color: transparent;
+				 outline: none;
+				transition: background 0.3s;
+			}
+			&.slick-active button {
+				background: $primary-color;
+			}
+		}
+	}
+}
+
+.qtvideos.slick-slider {
+	div {
+		padding: 0 10px 50px 10px;
+	}
+	.slick-arrow {
+		padding: 0;
+		opacity: 1;
+	}
+	.slick-slide  {
+		img {
+			width: 100%;
+			height: auto;
+		}
+		outline: none;
+	}
+	a {
+		position: relative;
+		display: block;
+		img {
+			position: relative;
+		}
+		&::after {
+			content: " ";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			z-index: 2;
+			transition: all 0.3s ease;
+			opacity: 0;
+		}
+		span {
+			display: block;
+			position: absolute;
+			font-size: 50px;
+			width: 50px;
+			height: 50px;
+			top: 50%;
+			left: 50%;
+			margin: -25px 0 0 -25px;
+			z-index: 3;
+			transition: all 0.3s ease;
+			top: -30%;
+		}
+		&:hover {
+			&::after {
+				opacity: 0.8;
+			}
+			span {
+				top: 50%;
+			}
+		}
+	}
+}
+
+
+/* 10. Particles JS
+================================================================ */
+
+.qt-particles {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* 11. Detail fixes
+================================================================ */
+.qt-menu-wrapper .qt-menu ul.qt-desktopmenu { z-index: 2000 ; }
+
+
+
+
+/* 12. Responsive media styles
+================================================================ */
+
+@media #{$medium-and-down} {
+	.button-collapse {
+		display: inline-block;
+		float: left;
+	}
+  	.container {
+    	width: 100%;
+  	}
+  	body, html {
+		font-size: 16px;
+	}
+	.qt-menu-switch {
+		font-size: 50px;
+		width: 70px;
+		height: 70px;
+		line-height: 70px;
+		text-align: center;
+	}
+  	h5 {font-size:0.8rem;}
+	h4 {font-size:1.5rem;}
+	h3 {font-size:2.25rem;}
+	h2 {font-size:3.38rem;}
+	h1 {font-size:5rem;}
+	h1.qt-title {font-size:14.199rem;line-height:1.25em;}
+	.side-nav {
+		background: #101010;
+	}
+	.section {
+		&.section-bio {
+			.parallax {
+
+			 	img {
+					position: absolute;
+					z-index: 0;
+				}
+			}
+			.content {
+				padding: 10px;
+			}
+		}
+		&.section.section-photos {
+			.qt-section-title {
+				position: relative;
+			}
+			padding-bottom: 80px;
+		}
+		&.section.section-booking {
+			.qt-booking-form > div {
+				padding: 12px;
+			}
+
+		}
+		&.section-presskit {
+			.qt-framed {
+				padding: 0;
+			}
+			h2 {
+				font-size: 1.8rem;
+			}
+			h4 {
+				font-size: 1rem;
+			}
+		}
+	}
+	.qt-desktopmenu {
+		display: none;
+	}
+	.slick-slider {
+		.slick-slide img {
+			width: 100%;
+			height: auto;
+		}
+		.slick-dots {
+			li {
+				button {
+					width: 6px;
+				}
+			}
+			bottom: 0;
+		}
+		.slick-arrow {
+			width: 50px;
+		}
+	}
+
+
+	.qt-gridstackCarousel-container .qt-gridstackCarousel .carousel-item a {
+		top: 50%;
+		z-index: 999;
+	}
+
+}

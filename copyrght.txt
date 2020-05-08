@@ -1,0 +1,13 @@
+#################################################################
+
+INCLUDED JS LIBRARIES
+
+#################################################################
+
+#	Respond.js
+
+#	Modernizr.js
+
+#	jQuery
+
+#	Materializecss // http://materializecss.com/

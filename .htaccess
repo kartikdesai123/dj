@@ -1,0 +1,5 @@
+AuthUserFile /www/htdocs/w01626ad/cm-duesseldorf.de/dj/.htpasswd
+AuthGroupFile /dev/null
+AuthName 'bitte Zugangsdaten eingeben'
+AuthType Basic
+require valid-user
